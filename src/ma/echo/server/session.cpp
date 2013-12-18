@@ -33,7 +33,7 @@ namespace {
 
 #if defined(MA_HAS_RVALUE_REFS) \
     && defined(MA_BIND_HAS_NO_MOVE_CONTRUCTOR) \
-    && !(defined(MA_HAS_LAMBDA) && !defined(MA_NO_IMPLICIT_MOVE_CONSTRUCTOR))
+    && !(defined(MA_HAS_LAMBDA) && !defined(MA_LAMBDA_HAS_NO_MOVE_CONTRUCTOR))
 
 // Home-grown binders to support move semantic
 class io_handler_binder
@@ -127,7 +127,7 @@ private:
 #endif // defined(MA_HAS_RVALUE_REFS)
        //     && defined(MA_BIND_HAS_NO_MOVE_CONTRUCTOR)
        //     && !(defined(MA_HAS_LAMBDA)
-       //         && !defined(MA_NO_IMPLICIT_MOVE_CONSTRUCTOR))
+       //         && !defined(MA_LAMBDA_HAS_NO_MOVE_CONTRUCTOR))
 
 } // anonymous namespace
 
@@ -285,7 +285,7 @@ void session::complete_extern_wait(const boost::system::error_code& error)
 }
 
 #if !(defined(MA_HAS_RVALUE_REFS) \
-    && defined(MA_HAS_LAMBDA) && !defined(MA_NO_IMPLICIT_MOVE_CONSTRUCTOR))
+    && defined(MA_HAS_LAMBDA) && !defined(MA_LAMBDA_HAS_NO_MOVE_CONTRUCTOR))
 
 void session::handle_read(const boost::system::error_code& error,
     std::size_t bytes_transferred)
@@ -369,7 +369,7 @@ void session::handle_timer(const boost::system::error_code& error)
 
 #endif // !(defined(MA_HAS_RVALUE_REFS)
        //     && defined(MA_HAS_LAMBDA)
-       //     && !defined(MA_NO_IMPLICIT_MOVE_CONSTRUCTOR))
+       //     && !defined(MA_LAMBDA_HAS_NO_MOVE_CONTRUCTOR))
 
 void session::handle_read_at_work(const boost::system::error_code& error,
     std::size_t bytes_transferred)
@@ -910,7 +910,7 @@ void session::start_socket_read(
     const cyclic_buffer::mutable_buffers_type& buffers)
 {
 #if defined(MA_HAS_RVALUE_REFS) \
-    && defined(MA_HAS_LAMBDA) && !defined(MA_NO_IMPLICIT_MOVE_CONSTRUCTOR)
+    && defined(MA_HAS_LAMBDA) && !defined(MA_LAMBDA_HAS_NO_MOVE_CONTRUCTOR)
 
   session_ptr shared_this = shared_from_this();
 
@@ -967,7 +967,7 @@ void session::start_socket_write(
     const cyclic_buffer::const_buffers_type& buffers)
 {
 #if defined(MA_HAS_RVALUE_REFS) \
-    && defined(MA_HAS_LAMBDA) && !defined(MA_NO_IMPLICIT_MOVE_CONSTRUCTOR)
+    && defined(MA_HAS_LAMBDA) && !defined(MA_LAMBDA_HAS_NO_MOVE_CONTRUCTOR)
 
   session_ptr shared_this = shared_from_this();
 
@@ -1026,7 +1026,7 @@ void session::start_timer_wait()
       "Invalid timer state");
 
 #if defined(MA_HAS_RVALUE_REFS) \
-    && defined(MA_HAS_LAMBDA) && !defined(MA_NO_IMPLICIT_MOVE_CONSTRUCTOR)
+    && defined(MA_HAS_LAMBDA) && !defined(MA_LAMBDA_HAS_NO_MOVE_CONTRUCTOR)
 
   session_ptr shared_this = shared_from_this();
 

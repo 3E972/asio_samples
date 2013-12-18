@@ -79,7 +79,7 @@ public:
   {
   }
 
-#endif // defined(MA_NO_IMPLICIT_MOVE_CONSTRUCTOR)
+#endif // defined(MA_NO_IMPLICIT_MOVE_CONSTRUCTOR) || !defined(NDEBUG)
 
 #else // defined(MA_HAS_RVALUE_REFS)
 
